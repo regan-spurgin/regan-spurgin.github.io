@@ -1,1 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Motorsport Driver Cooling | Regan Spurgin</title>
+
+    <style>
+        :root {
+            --black: #101820;
+            --deep: #162b36;
+            --teal: #2a8f9d;
+            --cornflower: #6495ed;
+            --silver: #aeb8c2;
+            --light-silver: #e7eaed;
+            --white: #ffffff;
+            --off-white: #f5f7f8;
+            --gray: #65717a;
+            --line: #d8dde1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--off-white);
+            color: var(--black);
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ================================
+           CHECKER STRIP
+        ================================= */
+
+        .checker {
+            height: 16px;
+
+            background-color: var(--black);
+
+            background-image:
+                linear-gradient(45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(-45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ffffff 75%),
+                linear-gradient(-45deg, transparent 75%, #ffffff 75%);
+
+            background-size: 24px 24px;
+
+            background-position:
+                0 0,
+                0 12px,
+                12px -12px,
+                -12px 0;
+        }
+
+        /* ================================
+           NAV
+        ================================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            padding: 17px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(245, 247, 248, 0.95);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand {
+            font-size: 0.85rem;
+            font-weight: 900;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .brand span {
+            color: var(--cornflower);
+        }
+
+        .back-link {
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .back-link:hover {
+            color: var(--cornflower);
+        }
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            padding: 115px 8% 95px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    var(--black) 0%,
+                    var(--deep) 65%,
+                    #1d414a 100%
+                );
+
+            color: var(--white);
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 620px;
+            height: 620px;
+
+            border-radius: 50%;
+
+            background: var(--cornflower);
+
+            opacity: 0.07;
+
+            right: -160px;
+            top: -180px;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: var(--cornflower);
+
+            font-size: 0.7rem;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            max-width: 1000px;
+
+            font-size: clamp(3.2rem, 8vw, 7.4rem);
+
+            line-height: 0.88;
+            letter-spacing: -0.065em;
+
+            margin-bottom: 35px;
+        }
+
+        h1 span {
+            color: var(--cornflower);
+        }
+
+        .hero-description {
+            max-width: 760px;
+
+            color: #d6dde1;
+
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+
+            margin-bottom: 42px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .hero-tag {
+            border: 1px solid rgba(255,255,255,0.25);
+
+            padding: 7px 10px;
+
+            font-size: 0.67rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+
+            color: #dce3e7;
+        }
+
+        /* ================================
+           CONTENT
+        ================================= */
+
+        main {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 95px 7%;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-label {
+            color: var(--cornflower);
+
+            font-size: 0.69rem;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+
+            margin-bottom: 14px;
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 5vw, 4.1rem);
+
+            line-height: 0.95;
+
+            letter-spacing: -0.055em;
+
+            margin-bottom: 38px;
+        }
+
+        .body-copy {
+            max-width: 780px;
+            font-size: 1.08rem;
+        }
+
+        .body-copy p + p {
+            margin-top: 21px;
+        }
+
+        .body-copy strong {
+            color: var(--deep);
+        }
+
+        /* ================================
+           AT A GLANCE
+        ================================= */
+
+        .glance-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+
+            background: var(--line);
+
+            border: 1px solid var(--line);
+        }
+
+        .glance-card {
+            background: var(--white);
+            padding: 25px;
+        }
+
+        .glance-card small {
+            display: block;
+
+            color: var(--gray);
+
+            font-size: 0.67rem;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+
+            margin-bottom: 8px;
+        }
+
+        .glance-card strong {
+            font-size: 0.95rem;
+        }
+
+        /* ================================
+           QUESTION
+        ================================= */
+
+        .question {
+            background: var(--black);
+            color: var(--white);
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question .section-label {
+            color: var(--cornflower);
+        }
+
+        .question h2 {
+            max-width: 900px;
+        }
+
+        .question-line {
+            max-width: 850px;
+
+            font-size: clamp(1.35rem, 3vw, 2.2rem);
+
+            line-height: 1.2;
+
+            color: #dbe1e5;
+        }
+
+        .question-line strong {
+            color: var(--cornflower);
+        }
+
+        /* ================================
+           APPROACH
+        ================================= */
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .approach-card {
+            border-top: 2px solid var(--black);
+            padding-top: 23px;
+        }
+
+        .approach-number {
+            color: var(--cornflower);
+
+            font-size: 0.68rem;
+            font-weight: 900;
+
+            letter-spacing: 0.13em;
+
+            margin-bottom: 11px;
+        }
+
+        .approach-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+        }
+
+        .approach-card p {
+            color: var(--gray);
+            font-size: 0.96rem;
+        }
+
+        /* ================================
+           EQUATIONS
+        ================================= */
+
+        .equation-box {
+            margin-top: 45px;
+
+            background: var(--white);
+
+            border: 1px solid var(--line);
+
+            padding: 35px;
+
+            overflow-x: auto;
+        }
+
+        .equation {
+            font-family: "Courier New", monospace;
+
+            font-size: 1.1rem;
+            font-weight: 700;
+
+            margin-bottom: 13px;
+        }
+
+        .equation-explain {
+            color: var(--gray);
+            font-size: 0.88rem;
+        }
+
+        /* ================================
+           FIGURE PLACEHOLDER
+        ================================= */
+
+        .figure {
+            margin-top: 48px;
+
+            background: #eef1f3;
+
+            border: 1px dashed #abb4bb;
+
+            min-height: 380px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 40px;
+        }
+
+        .figure-inner {
+            max-width: 550px;
+        }
+
+        .figure-label {
+            color: var(--cornflower);
+
+            font-size: 0.68rem;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+
+            margin-bottom: 10px;
+        }
+
+        .figure p {
+            color: var(--gray);
+            font-size: 0.92rem;
+        }
+
+        /* ================================
+           RESULTS
+        ================================= */
+
+        .results-intro {
+            max-width: 760px;
+
+            color: var(--gray);
+
+            font-size: 1rem;
+
+            margin-bottom: 40px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+        .result {
+            background: var(--white);
+
+            border: 1px solid var(--line);
+
+            padding: 32px;
+        }
+
+        .result-number {
+            font-size: 2.7rem;
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            color: var(--cornflower);
+
+            margin-bottom: 11px;
+        }
+
+        .result h3 {
+            font-size: 1rem;
+            margin-bottom: 7px;
+        }
+
+        .result p {
+            color: var(--gray);
+            font-size: 0.88rem;
+        }
+
+        /* ================================
+           TAKEAWAYS
+        ================================= */
+
+        .takeaways {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .takeaway {
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .takeaway h3 {
+            font-size: 1.15rem;
+            margin-bottom: 9px;
+        }
+
+        .takeaway p {
+            color: var(--gray);
+            font-size: 0.94rem;
+        }
+
+        /* ================================
+           LIMITATIONS
+        ================================= */
+
+        .limitations {
+            background: #eceff1;
+        }
+
+        .limitation-list {
+            max-width: 850px;
+        }
+
+        .limitation {
+            padding: 19px 0;
+            border-bottom: 1px solid #cfd5d9;
+
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 15px;
+        }
+
+        .limitation-number {
+            color: var(--cornflower);
+            font-weight: 900;
+        }
+
+        .limitation p {
+            color: #59666e;
+            font-size: 0.95rem;
+        }
+
+        /* ================================
+           NEXT ITERATION
+        ================================= */
+
+        .next {
+            background: var(--deep);
+            color: var(--white);
+        }
+
+        .next .section-label {
+            color: var(--cornflower);
+        }
+
+        .next-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 1px;
+
+            background: rgba(255,255,255,0.18);
+        }
+
+        .next-item {
+            background: var(--deep);
+            padding: 30px;
+        }
+
+        .next-item h3 {
+            margin-bottom: 10px;
+        }
+
+        .next-item p {
+            color: #b9c3c9;
+            font-size: 0.88rem;
+        }
+
+        /* ================================
+           GITHUB CTA
+        ================================= */
+
+        .github {
+            text-align: center;
+        }
+
+        .github p {
+            max-width: 650px;
+
+            color: var(--gray);
+
+            margin: 0 auto 30px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 21px;
+
+            border: 1px solid var(--black);
+
+            font-size: 0.74rem;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            transition: 0.2s ease;
+        }
+
+        .button.primary {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            padding: 25px 7%;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--gray);
+
+            font-size: 0.7rem;
+
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 850px) {
+
+            .glance-grid,
+            .results-grid,
+            .next-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .approach-grid,
+            .takeaways {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 16px 6%;
+            }
+
+            .hero {
+                padding: 80px 7% 75px;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+
+            .glance-grid,
+            .results-grid,
+            .next-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="checker"></div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="../../index.html" class="brand">
+            [YOUR NAME] <span>///</span>
+        </a>
+
+        <a href="../../index.html#projects" class="back-link">
+            ← Back to the work
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-inner">
+
+            <div class="eyebrow">
+                Project 01 / Thermal Systems / Motorsport
+            </div>
+
+            <h1>
+                Keeping the driver<br>
+                <span>cool enough to think.</span>
+            </h1>
+
+            <p class="hero-description">
+                A lightweight thermal-management concept for motorsport,
+                modeled in MATLAB around environmental heat load,
+                physiological inputs, phase-change materials, and a
+                coolant loop.
+
+                Because apparently putting a person inside a race car
+                and heating them up wasn't enough.
+            </p>
+
+            <div class="hero-meta">
+                <span class="hero-tag">MATLAB</span>
+                <span class="hero-tag">Thermal Modeling</span>
+                <span class="hero-tag">PCM</span>
+                <span class="hero-tag">Heat Transfer</span>
+                <span class="hero-tag">Fluid Systems</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- AT A GLANCE -->
+
+        <section>
+
+            <div class="section-label">
+                01 / At a glance
+            </div>
+
+            <h2>
+                The setup.
+            </h2>
+
+            <div class="glance-grid">
+
+                <div class="glance-card">
+                    <small>Discipline</small>
+                    <strong>Biomedical Engineering</strong>
+                </div>
+
+                <div class="glance-card">
+                    <small>Application</small>
+                    <strong>Motorsport</strong>
+                </div>
+
+                <div class="glance-card">
+                    <small>Primary Tool</small>
+                    <strong>MATLAB</strong>
+                </div>
+
+                <div class="glance-card">
+                    <small>Status</small>
+                    <strong>Active development</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROBLEM -->
+
+        <section>
+
+            <div class="section-label">
+                02 / The problem
+            </div>
+
+            <h2>
+                The human is<br>
+                generating heat.
+            </h2>
+
+            <div class="body-copy">
+
+                <p>
+                    A race car's thermal environment is not particularly
+                    interested in whether its driver is having a good day.
+                </p>
+
+                <p>
+                    The driver is dealing with heat from the surrounding
+                    environment, metabolic heat generation, protective
+                    equipment, and the thermal behavior of the cooling
+                    system itself.
+                </p>
+
+                <p>
+                    That means a useful cooling system has to do more than
+                    simply make something cold. It has to manage the
+                    <strong>entire thermal balance of the person inside
+                    the system.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUESTION -->
+
+        <section class="question">
+
+            <div class="section-label">
+                03 / The engineering question
+            </div>
+
+            <h2>
+                So what are we<br>
+                actually trying to do?
+            </h2>
+
+            <p class="question-line">
+                Design a cooling approach that can reduce driver thermal
+                load while remaining <strong>lightweight, practical,
+                and compatible with motorsport constraints.</strong>
+            </p>
+
+        </section>
+
+
+        <!-- APPROACH -->
+
+        <section>
+
+            <div class="section-label">
+                04 / Approach
+            </div>
+
+            <h2>
+                Put the physics<br>
+                in the computer.
+            </h2>
+
+            <div class="approach-grid">
+
+                <div class="approach-card">
+
+                    <div class="approach-number">
+                        01 / THERMAL INPUTS
+                    </div>
+
+                    <h3>
+                        Account for where the heat comes from.
+                    </h3>
+
+                    <p>
+                        The model considers metabolic heat generation,
+                        environmental heat load, and the cooling contribution
+                        required to change the driver's thermal state over
+                        time.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <div class="approach-number">
+                        02 / PCM BEHAVIOR
+                    </div>
+
+                    <h3>
+                        Give the heat somewhere to go.
+                    </h3>
+
+                    <p>
+                        Phase-change material provides a temporary thermal
+                        sink by absorbing energy during the phase transition,
+                        creating a cooling window before saturation.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <div class="approach-number">
+                        03 / FLUID LOOP
+                    </div>
+
+                    <h3>
+                        Move the heat.
+                    </h3>
+
+                    <p>
+                        A water-glycol loop is modeled as the transport
+                        mechanism connecting the thermal source and the
+                        cooling hardware.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-card">
+
+                    <div class="approach-number">
+                        04 / CONTROL LOGIC
+                    </div>
+
+                    <h3>
+                        Don't cool blindly.
+                    </h3>
+
+                    <p>
+                        The concept explores changing system behavior in
+                        response to physiological and environmental inputs
+                        rather than treating the driver as a constant
+                        temperature source.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="equation-box">
+
+                <div class="equation">
+                    Q<sub>net</sub> = Q<sub>metabolic</sub>
+                    + Q<sub>environmental</sub>
+                    − Q<sub>cooling</sub>
+                </div>
+
+                <div class="equation-explain">
+                    Net thermal load = metabolic heat + environmental heat
+                    − heat removed by the cooling system.
+                </div>
+
+            </div>
+
+
+            <!-- DIAGRAM PLACEHOLDER -->
+
+            <div class="figure">
+
+                <div class="figure-inner">
+
+                    <div class="figure-label">
+                        Figure 01 / System architecture
+                    </div>
+
+                    <p>
+                        Add your cooling-system diagram here.
+                        This can eventually show the driver,
+                        PCM, sensors, coolant loop, pump, and
+                        thermal pathways.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTS -->
+
+        <section>
+
+            <div class="section-label">
+                05 / Results
+            </div>
+
+            <h2>
+                The numbers<br>
+                have opinions.
+            </h2>
+
+            <p class="results-intro">
+                This section is where the model gets to defend itself.
+                Replace the placeholders below with your actual calculated
+                outputs, figures, and interpretations as the project is
+                finalized.
+            </p>
+
+
+            <div class="results-grid">
+
+                <div class="result">
+
+                    <div class="result-number">
+                        XX
+                    </div>
+
+                    <h3>
+                        Peak driver temperature
+                    </h3>
+
+                    <p>
+                        Add your modeled peak value and the conditions
+                        under which it occurs.
+                    </p>
+
+                </div>
+
+
+                <div class="result">
+
+                    <div class="result-number">
+                        XX
+                    </div>
+
+                    <h3>
+                        PCM operating window
+                    </h3>
+
+                    <p>
+                        Add the modeled duration before the PCM
+                        approaches saturation.
+                    </p>
+
+                </div>
+
+
+                <div class="result">
+
+                    <div class="result-number">
+                        XX
+                    </div>
+
+                    <h3>
+                        Cooling contribution
+                    </h3>
+
+                    <p>
+                        Quantify the thermal load removed by the
+                        proposed cooling approach.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- GRAPH PLACEHOLDER -->
+
+            <div class="figure">
+
+                <div class="figure-inner">
+
+                    <div class="figure-label">
+                        Figure 02 / Temperature vs. time
+                    </div>
+
+                    <p>
+                        Drop your MATLAB temperature plot here.
+                        Ideally, this becomes one of the first things
+                        a technical reviewer sees.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TAKEAWAYS -->
+
+        <section>
+
+            <div class="section-label">
+                06 / What I learned
+            </div>
+
+            <h2>
+                Bwoah.<br>
+                Thermal systems are complicated.
+            </h2>
+
+            <div class="takeaways">
+
+                <div class="takeaway">
+
+                    <h3>
+                        Cooling is a systems problem.
+                    </h3>
+
+                    <p>
+                        Changing one part of the system changes what the
+                        rest of the system has to do. Heat generation,
+                        transport, storage, and rejection cannot really
+                        be designed in isolation.
+                    </p>
+
+                </div>
+
+
+                <div class="takeaway">
+
+                    <h3>
+                        Lightweight is not the same as simple.
+                    </h3>
+
+                    <p>
+                        Reducing mass creates additional design constraints
+                        rather than removing them. Every component still
+                        has to earn its place.
+                    </p>
+
+                </div>
+
+
+                <div class="takeaway">
+
+                    <h3>
+                        The model is only as good as its assumptions.
+                    </h3>
+
+                    <p>
+                        A clean MATLAB plot is not experimental validation.
+                        Knowing what the model does not capture is part of
+                        understanding what it does.
+                    </p>
+
+                </div>
+
+
+                <div class="takeaway">
+
+                    <h3>
+                        The interesting part is the human.
+                    </h3>
+
+                    <p>
+                        Traditional thermal-system thinking becomes more
+                        interesting when the thermal system is ultimately
+                        protecting a person rather than a component.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LIMITATIONS -->
+
+        <section class="limitations">
+
+            <div class="section-label">
+                07 / Limitations
+            </div>
+
+            <h2>
+                Where the model<br>
+                stops pretending.
+            </h2>
+
+            <div class="limitation-list">
+
+                <div class="limitation">
+
+                    <div class="limitation-number">
+                        01
+                    </div>
+
+                    <p>
+                        Physiological heat generation is represented using
+                        modeled or assumed inputs rather than measurements
+                        from a validated human-subject experiment.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation">
+
+                    <div class="limitation-number">
+                        02
+                    </div>
+
+                    <p>
+                        Environmental conditions are simplified relative
+                        to the full range of temperatures, solar load,
+                        humidity, airflow, and vehicle conditions encountered
+                        in actual motorsport.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation">
+
+                    <div class="limitation-number">
+                        03
+                    </div>
+
+                    <p>
+                        PCM performance depends on material properties and
+                        real-world packaging conditions that require
+                        experimental validation.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation">
+
+                    <div class="limitation-number">
+                        04
+                    </div>
+
+                    <p>
+                        The current model is a design and analysis tool,
+                        not a validated finished driver-cooling product.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NEXT -->
+
+        <section class="next">
+
+            <div class="section-label">
+                08 / Next iteration
+            </div>
+
+            <h2>
+                Naturally, I'm<br>
+                not done.
+            </h2>
+
+            <div class="next-grid">
+
+                <div class="next-item">
+
+                    <h3>
+                        Physical testing
+                    </h3>
+
+                    <p>
+                        Build and characterize the PCM and coolant system
+                        experimentally rather than asking MATLAB to do
+                        absolutely everything.
+                    </p>
+
+                </div>
+
+
+                <div class="next-item">
+
+                    <h3>
+                        Sensor integration
+                    </h3>
+
+                    <p>
+                        Add measured temperature and environmental inputs
+                        to compare real system behavior with the model.
+                    </p>
+
+                </div>
+
+
+                <div class="next-item">
+
+                    <h3>
+                        Better control logic
+                    </h3>
+
+                    <p>
+                        Explore adaptive cooling behavior based on changing
+                        physiological and environmental conditions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GITHUB -->
+
+        <section class="github">
+
+            <div class="section-label">
+                09 / Technical files
+            </div>
+
+            <h2>
+                Want the actual receipts?
+            </h2>
+
+            <p>
+                This page explains the engineering.
+                The repository contains the work behind it.
+            </p>
+
+            <a
+                href="YOUR_COOLING_GITHUB_REPO"
+                class="button primary"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                View the GitHub repository →
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>
+            Regan Spurgin
+        </span>
+
+        <span>
+            Engineering the human side of speed.
+        </span>
+
+    </footer>
+
+</body>
+</html>
