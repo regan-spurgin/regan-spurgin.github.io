@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>REGAN SPURGIN | Biomedical Engineering × Motorsport</title>
+
+    <style>
+        :root {
+            --navy: #17233c;
+            --blue: #5b8fcf;
+            --lavender: #b9acd9;
+            --cream: #f7f5ef;
+            --white: #ffffff;
+            --gray: #667085;
+            --line: #dedbd2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(247, 245, 239, 0.94);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-name {
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: 88vh;
+            padding: 100px 8% 80px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: var(--lavender);
+            opacity: 0.25;
+            right: -100px;
+            top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(3.2rem, 8vw, 7rem);
+            line-height: 0.95;
+            letter-spacing: -0.055em;
+            margin-bottom: 30px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            max-width: 720px;
+            color: var(--gray);
+            margin-bottom: 36px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 13px 22px;
+            border: 1px solid var(--navy);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.2s ease;
+        }
+
+        .button.primary {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ---------- GENERAL ---------- */
+
+        section {
+            padding: 100px 8%;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-label {
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            margin-bottom: 50px;
+        }
+
+        /* ---------- ABOUT ---------- */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            max-width: 650px;
+        }
+
+        .about-text p + p {
+            margin-top: 20px;
+        }
+
+        .interest-list {
+            border-top: 1px solid var(--line);
+        }
+
+        .interest {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .interest span:last-child {
+            color: var(--gray);
+            text-align: right;
+        }
+
+        /* ---------- PROJECTS ---------- */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            padding: 34px;
+            min-height: 310px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(23, 35, 60, 0.08);
+        }
+
+        .project-number {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .project-card h3 {
+            font-size: 1.7rem;
+            margin: 35px 0 12px;
+        }
+
+        .project-card p {
+            color: var(--gray);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 25px;
+        }
+
+        .tag {
+            font-size: 0.72rem;
+            border: 1px solid var(--line);
+            padding: 5px 9px;
+            color: var(--gray);
+        }
+
+        /* ---------- CURRENTLY LEARNING ---------- */
+
+        .learning {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .learning .section-label {
+            color: var(--lavender);
+        }
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .learning-item {
+            padding: 35px;
+            background: var(--navy);
+        }
+
+        .learning-item h3 {
+            margin-bottom: 10px;
+        }
+
+        .learning-item p {
+            color: #c9ced8;
+            font-size: 0.95rem;
+        }
+
+        /* ---------- WRITING ---------- */
+
+        .writing-card {
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 40px 0;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+        }
+
+        .writing-title {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .writing-description {
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        /* ---------- CONTACT ---------- */
+
+        .contact {
+            text-align: center;
+            padding-bottom: 120px;
+        }
+
+        .contact h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-weight: 700;
+        }
+
+        .contact-links a:hover {
+            color: var(--blue);
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding-top: 70px;
+            }
+
+            .about-grid,
+            .projects,
+            .learning-grid,
+            .writing-card {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 75px 7%;
+            }
+
+            .project-card {
+                min-height: auto;
+            }
+
+            .writing-card {
+                gap: 20px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <a href="#" class="nav-name">Regan Spurgin</a>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Work</a>
+            <a href="#learning">Learning</a>
+            <a href="#writing">Writing</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Biomedical Engineering × Motorsport × Human Performance
+            </div>
+
+            <h1>
+                Engineering<br>
+                the human<br>
+                side of speed.
+            </h1>
+
+            <p class="hero-subtitle">
+                I build and investigate things at the intersection of
+                biomedical engineering, biomechanics, thermal systems,
+                motorsport, and technical communication.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="button primary">
+                    Explore my work
+                </a>
+
+                <a href="#contact" class="button">
+                    Get in touch
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="section-label">01 / About</div>
+
+        <h2>
+            The short version.
+        </h2>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I'm a biomedical engineering student interested in a
+                    deceptively simple question:
+                </p>
+
+                <p>
+                    <strong>What happens when you put the human body inside
+                    a machine designed to operate at extreme speeds?</strong>
+                </p>
+
+                <p>
+                    My work explores that question through engineering,
+                    biomechanics, thermal modeling, human factors,
+                    biomedical research, and motorsport.
+                </p>
+
+                <p>
+                    I also write about the engineering behind racing through
+                    <strong>Behind the Visor</strong>, a technical motorsport
+                    publication focused on the bioengineering that exists underneath
+                    the headlines.
+                </p>
+
+            </div>
+
+
+            <div class="interest-list">
+
+                <div class="interest">
+                    <span>Biomedical Engineering</span>
+                    <span>Human systems</span>
+                </div>
+
+                <div class="interest">
+                    <span>Biomechanics</span>
+                    <span>Motion + impact</span>
+                </div>
+
+                <div class="interest">
+                    <span>Thermal Systems</span>
+                    <span>Heat + cooling</span>
+                </div>
+
+                <div class="interest">
+                    <span>Motorsport</span>
+                    <span>F1 + FSAE</span>
+                </div>
+
+                <div class="interest">
+                    <span>Technical Writing</span>
+                    <span>Engineering communication</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="section-label">02 / Selected Work</div>
+
+        <h2>
+            Things I've<br>
+            actually built.
+        </h2>
+
+
+        <div class="projects">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="project-card">
+
+                <div>
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>
+                        Motorsport Driver Cooling
+                    </h3>
+
+                    <p>
+                        A MATLAB-based thermal management concept exploring
+                        environmental heat load, physiological inputs,
+                        phase-change materials, and cooling-system behavior
+                        for motorsport applications.
+                    </p>
+
+                </div>
+
+                <div class="tags">
+                    <span class="tag">MATLAB</span>
+                    <span class="tag">Thermal Modeling</span>
+                    <span class="tag">PCM</span>
+                    <span class="tag">Heat Transfer</span>
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="project-card">
+
+                <div>
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>
+                        Motorsport Crash Biomechanics
+                    </h3>
+
+                    <p>
+                        Video-based analysis of motorsport crashes using
+                        kinematics, engineering mechanics, motion analysis,
+                        and force/torque concepts to investigate how drivers
+                        interact with extreme deceleration events.
+                    </p>
+
+                </div>
+
+                <div class="tags">
+                    <span class="tag">Kinovea</span>
+                    <span class="tag">Biomechanics</span>
+                    <span class="tag">Kinematics</span>
+                    <span class="tag">Mechanics</span>
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="project-card">
+
+                <div>
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>
+                        FSAE Driver Ergonomics
+                    </h3>
+
+                    <p>
+                        Exploring driver anthropometrics, human factors,
+                        steering-wheel design, material selection, and the
+                        relationship between vehicle design and the person
+                        operating it.
+                    </p>
+
+                </div>
+
+                <div class="tags">
+                    <span class="tag">FSAE</span>
+                    <span class="tag">Ergonomics</span>
+                    <span class="tag">Human Factors</span>
+                    <span class="tag">Engineering Design</span>
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 4 -->
+
+            <article class="project-card">
+
+                <div>
+
+                    <div class="project-number">
+                        PROJECT 04
+                    </div>
+
+                    <h3>
+                        Glovegineering: Gecko-Inspired
+                    </h3>
+
+                    <p>
+                        Exploring a potential new glove design for Formula 1 
+                      which takes inspiration from gecko feet, specifically the 
+                      setae, which allows them a comfortable, easy grip. My goal is to
+                      translate this to Formula 1, without compromising the 
+                      driver's potential performance.
+                    </p>
+
+                </div>
+
+                <div class="tags">
+                    <span class="tag">Gloves</span>
+                    <span class="tag">Gecko Feet</span>
+                    <span class="tag">Grip Adjustment</span>
+                    <span class="tag">Driver Performance</span>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CURRENTLY LEARNING -->
+
+    <section id="learning" class="learning">
+
+        <div class="section-label">03 / Currently Learning</div>
+
+        <h2>
+            Building the<br>
+            toolkit.
+        </h2>
+
+
+        <div class="learning-grid">
+
+            <div class="learning-item">
+                <h3>MATLAB + Simulink</h3>
+                <p>
+                    Modeling, numerical methods, data analysis, and
+                    engineering systems.
+                </p>
+            </div>
+
+            <div class="learning-item">
+                <h3>Human Motion Analysis</h3>
+                <p>
+                    Kinematics, kinetics, inverse dynamics, and the
+                    mechanics of human movement.
+                </p>
+            </div>
+
+            <div class="learning-item">
+                <h3>Bioinformatics</h3>
+                <p>
+                    Learning computational approaches to biological and
+                    biomedical research.
+                </p>
+            </div>
+
+            <div class="learning-item">
+                <h3>CAD + Engineering Design</h3>
+                <p>
+                    Developing practical design skills through engineering
+                    and motorsport projects.
+                </p>
+            </div>
+
+            <div class="learning-item">
+                <h3>Biomedical Research</h3>
+                <p>
+                    Building knowledge across molecular biology,
+                    microbiology, and systems biology.
+                </p>
+            </div>
+
+            <div class="learning-item">
+                <h3>Motorsport Engineering</h3>
+                <p>
+                    Studying the systems, regulations, and human factors
+                    behind high-performance racing.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WRITING -->
+
+    <section id="writing">
+
+        <div class="section-label">04 / Technical Communication</div>
+
+        <h2>
+            I write about<br>
+            engineering, too.
+        </h2>
+
+
+        <div class="writing-card">
+
+            <div class="writing-title">
+                Behind the Visor
+            </div>
+
+            <div class="writing-description">
+
+                <p>
+                    A technical motorsport publication exploring the
+                    engineering behind racing — from driver biomechanics
+                    and crash survival to vehicle safety, thermal systems,
+                    and FIA regulations.
+                </p>
+
+                <br>
+
+                <p>
+                    The goal isn't just to explain what happened on track.
+                    It's to explain <em>why</em> it happened.
+                </p>
+
+                <br>
+
+                <a href="behindthevisorf1.substack.com" class="button">
+                    Read the publication →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <div class="section-label">05 / Contact</div>
+
+        <h2>
+            Let's build something.
+        </h2>
+
+        <p>
+            I'm interested in biomedical engineering, motorsport,
+            human performance, research, engineering design, and
+            technical communication.
+        </p>
+
+        <div class="contact-links">
+
+            <a href="mailto:reganspurgin.1@gmail.com">
+                Email
+            </a>
+
+            <a href="https://www.linkedin.com/in/regan-spurgin/" target="_blank">
+                LinkedIn
+            </a>
+
+            <a href="https://github.com/regan-spurgin" target="_blank">
+                GitHub
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>
+            © 2026 Regan Spurgin
+        </span>
+
+        <span>
+            Biomedical Engineering × Motorsport
+        </span>
+
+    </footer>
+
+</body>
+</html>
