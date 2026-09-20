@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>REGAN SPURGIN | Biomedical Engineering × Motorsport</title>
+    <title>Regan Spurgin | Biomedical Engineering × Motorsport</title>
 
     <style>
         :root {
-           --merc-black: #101820;
+            --merc-black: #101820;
             --merc-deep: #162b36;
             --merc-teal: #2a8f9d;
             --cornflower: #6495ed;
@@ -42,7 +42,9 @@
             text-decoration: none;
         }
 
-        /* ---------- NAVIGATION ---------- */
+        /* =========================================
+           NAVIGATION
+        ========================================= */
 
         nav {
             position: sticky;
@@ -59,9 +61,13 @@
 
         .nav-name {
             font-weight: 900;
-            letter-spacing: 0.04em;
-             text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
             font-size: 0.9rem;
+        }
+
+        .nav-name span {
+            color: var(--cornflower);
         }
 
         .nav-links {
@@ -74,14 +80,14 @@
         }
 
         .nav-links a {
-             transition: 0.2s ease;
+            transition: 0.2s ease;
         }
 
         .nav-links a:hover {
             color: var(--cornflower);
         }
 
-           /* =========================================
+        /* =========================================
            CHECKERED FLAG
         ========================================= */
 
@@ -104,22 +110,12 @@
                 -14px 0px;
         }
 
-
-        /* =========================== 
-        HERO 
-        =========================== */
+        /* =========================================
+           HERO
+        ========================================= */
 
         .hero {
             min-height: 88vh;
-            padding: 100px 8% 80px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-             min-height: 88vh;
             padding: 90px 8% 100px;
             display: flex;
             align-items: center;
@@ -135,40 +131,90 @@
             color: var(--white);
         }
 
-        .   .hero-content {
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            border-radius: 50%;
+            background: var(--cornflower);
+            opacity: 0.08;
+            right: -180px;
+            top: -100px;
+        }
+
+        .hero-content {
             max-width: 1000px;
             position: relative;
             z-index: 2;
         }
 
-         .hero::after {
-            content: "";
-            position: absolute;
-            width: 650px;
-            height: 650px;
-            border-radius: 50%;
-            background: var(--cornflower);
-            opacity: 0.08;
-            right: -180px;
-            top: -100px;
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--cornflower);
+            margin-bottom: 24px;
         }
 
-       .hero::after {
-            content: "";
-            position: absolute;
-            width: 650px;
-            height: 650px;
-            border-radius: 50%;
+        h1 {
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
+            line-height: 0.88;
+            letter-spacing: -0.065em;
+            margin-bottom: 34px;
+        }
+
+        h1 .accent {
+            color: var(--cornflower);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            max-width: 720px;
+            color: #d6dde1;
+            margin-bottom: 38px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 21px;
+            border: 1px solid rgba(255,255,255,0.55);
+            font-weight: 800;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: 0.2s ease;
+        }
+
+        .button.primary {
             background: var(--cornflower);
-            opacity: 0.08;
-            right: -180px;
-            top: -100px;
+            border-color: var(--cornflower);
+            color: var(--white);
+        }
 
-        /* ========================== 
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-note {
+            margin-top: 70px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--silver);
+        }
+
+        /* =========================================
            GENERAL
-           ======================== */
+        ========================================= */
 
-       
         section {
             padding: 105px 8%;
             border-top: 1px solid var(--line);
@@ -190,9 +236,9 @@
             margin-bottom: 55px;
         }
 
-        /* ======================== 
-           ABOUT 
-           ===================== */
+        /* =========================================
+           ABOUT
+        ========================================= */
 
         .about-grid {
             display: grid;
@@ -236,9 +282,9 @@
             text-align: right;
         }
 
-        /* ===================== 
-           PROJECTS 
-           ==================== */
+        /* =========================================
+           PROJECTS
+        ========================================= */
 
         .projects {
             display: grid;
@@ -313,12 +359,11 @@
             letter-spacing: 0.04em;
         }
 
+        /* =========================================
+           CURRENTLY IN THE GARAGE
+        ========================================= */
 
-        /* ============================= 
-           CURRENTLY IN THE GARAGE 
-          ========================== */
-
-      .learning {
+        .learning {
             background: var(--merc-black);
             color: var(--white);
         }
@@ -358,6 +403,7 @@
             color: #aeb8c2;
             font-size: 0.88rem;
         }
+
         /* =========================================
            WRITING
         ========================================= */
@@ -489,12 +535,21 @@
     </style>
 </head>
 
+
 <body>
 
     <!-- CHEQUERED FLAG -->
 
+    <div class="checker"></div>
+
+
+    <!-- NAVIGATION -->
+
     <nav>
-        <a href="#" class="nav-name">Regan Spurgin</a>
+
+        <a href="#" class="nav-name">
+            Regan Spurgin <span>///</span>
+        </a>
 
         <div class="nav-links">
             <a href="#about">About</a>
@@ -503,6 +558,7 @@
             <a href="#writing">Writing</a>
             <a href="#contact">Contact</a>
         </div>
+
     </nav>
 
 
@@ -518,32 +574,34 @@
 
             <h1>
                 I build things<br>
-                for people who<br>
+                for humans who<br>
                 go <span class="accent">stupidly fast.</span>
             </h1>
 
             <p class="hero-subtitle">
-                 Biomedical engineering student investigating what happens
+                Biomedical engineering student investigating what happens
                 when you put the human body inside a machine designed to
                 operate at extreme speed.
             </p>
 
             <div class="hero-buttons">
+
                 <a href="#projects" class="button primary">
-                    Admire the work
+                    View the work
                 </a>
 
-                <a href="#contact" class="button">
-                    Get in touch
+                <a href="#writing" class="button">
+                    Read the writing
                 </a>
+
             </div>
-            
- <div class="hero-note">
+
+            <div class="hero-note">
                 Engineering the human side of speed.
+            </div>
+
         </div>
-            
-        </div>
-        
+
     </header>
 
 
@@ -551,7 +609,9 @@
 
     <section id="about">
 
-        <div class="section-label">01 / About</div>
+        <div class="section-label">
+            01 / About
+        </div>
 
         <h2>
             The short version.
@@ -562,30 +622,32 @@
             <div class="about-text">
 
                 <p>
-                    I'm an engineering student obsessed with the human body and problems.
+                    I like engineering problems and I'm obsessed with
+                    the human body becoming a problem.
                 </p>
 
                 <p>
-                    <strong>Problems that involve going very, very fast.</strong>
+                    My work sits at the intersection of
+                    <strong>biomedical engineering, biomechanics,
+                    thermal systems, human factors, and motorsport.</strong>
                 </p>
 
                 <p>
-                    My work explores engineering,
-                    biomechanics, thermal modeling, human factors,
-                    biomedical research, and motorsport.
+                    Which is a slightly complicated way of saying:
+                    I'm interested in figuring out what happens to people
+                    when engineering starts getting really, really fast.
                 </p>
 
                 <p>
-                    I also write about the engineering behind racing through
-                    <strong>Behind the Visor</strong>, a technical motorsport
-                    publication focused on the bioengineering that exists underneath
-                    the headlines.
+                    Outside of technical projects, I write about the
+                    engineering behind racing through
+                    <strong>Behind the Visor</strong>.
                 </p>
 
             </div>
 
 
-            <div class="interest-list">
+            <div class="about-list">
 
                 <div class="interest">
                     <span>Biomedical Engineering</span>
@@ -623,7 +685,8 @@
 
     <section id="projects">
 
-        <div class="section-label">02 / The Receipts
+        <div class="section-label">
+            02 / The Receipts
         </div>
 
         <h2>
@@ -685,8 +748,8 @@
                     <p>
                         Video-based analysis of motorsport crashes using
                         kinematics, engineering mechanics, motion analysis,
-                        and force/torque concepts to investigate how drivers
-                        interact with extreme deceleration events.
+                        and force/torque concepts to investigate driver
+                        interaction with extreme deceleration events.
                     </p>
 
                 </div>
@@ -718,8 +781,8 @@
                     <p>
                         Exploring driver anthropometrics, human factors,
                         steering-wheel design, material selection, and the
-                        relationship between vehicle design and the person
-                        operating it.
+                        engineering decisions behind keeping the driver
+                        functional inside the car.
                     </p>
 
                 </div>
@@ -728,7 +791,7 @@
                     <span class="tag">FSAE</span>
                     <span class="tag">Ergonomics</span>
                     <span class="tag">Human Factors</span>
-                    <span class="tag">Engineering Design</span>
+                    <span class="tag">Design</span>
                 </div>
 
             </article>
@@ -745,24 +808,23 @@
                     </div>
 
                     <h3>
-                        Glovegineering: Gecko-Inspired
+                        Glove Engineering
                     </h3>
 
                     <p>
-                        Exploring a potential new glove design for Formula 1 
-                      which takes inspiration from gecko feet, specifically the 
-                      setae, which allows them a comfortable, easy grip. My goal is to
-                      translate this to Formula 1, without compromising the 
-                      driver's potential performance.
+                        Using gecko feet as an inspiration
+                        to develop gloves which improve 
+                        Formula driver comfort without 
+                        compromising grip strength while at it.
                     </p>
 
                 </div>
 
                 <div class="tags">
-                    <span class="tag">Gloves</span>
                     <span class="tag">Gecko Feet</span>
-                    <span class="tag">Grip Adjustment</span>
-                    <span class="tag">Driver Performance</span>
+                    <span class="tag">Setae</span>
+                    <span class="tag">Driver Comfort</span>
+                    <span class="tag">Grip Strength</span>
                 </div>
 
             </article>
@@ -776,7 +838,9 @@
 
     <section id="learning" class="learning">
 
-        <div class="section-label">03 / Currently In the Garage</div>
+        <div class="section-label">
+            03 / Currently in the Garage
+        </div>
 
         <h2>
             The toolkit<br>
@@ -805,7 +869,7 @@
             <div class="learning-item">
                 <h3>Bioinformatics</h3>
                 <p>
-                    Learning computational approaches to biological and
+                    Computational approaches to biological and
                     biomedical research.
                 </p>
             </div>
@@ -843,18 +907,21 @@
 
     <section id="writing">
 
-        <div class="section-label">04 / Technical Communication</div>
+        <div class="section-label">
+            04 / Technical Communication
+        </div>
 
         <h2>
             Yes, I write<br>
-            about it, too.
+            about it too.
         </h2>
 
 
         <div class="writing-card">
 
             <div class="writing-title">
-                Behind the Visor
+                Behind<br>
+                the <span>Visor.</span>
             </div>
 
             <div class="writing-description">
@@ -869,15 +936,14 @@
                 <br>
 
                 <p>
-                    The goal is to write about <strong>why</strong> something happened on a track.
-                    A crash? A fire? The driver can't see anymore?
-                    <strong>I explain it.</strong>
+                    The goal isn't just to explain what happened on track.
+                    It's to explain <strong>why</strong> it happened.
                 </p>
 
                 <br>
 
                 <a href="behindthevisorf1.substack.com" class="button">
-                    Read the publication →
+                    Read Behind the Visor →
                 </a>
 
             </div>
@@ -891,11 +957,13 @@
 
     <section id="contact" class="contact">
 
-        <div class="section-label">05 / Contact</div>
+        <div class="section-label">
+            05 / Contact
+        </div>
 
         <h2>
             Got a weird<br>
-            problem>
+            problem?
         </h2>
 
         <p>
@@ -932,7 +1000,7 @@
         </span>
 
         <span>
-            engineering the human behind the speed. 
+            engineering the human behind the cars.
         </span>
 
     </footer>
